@@ -1,8 +1,11 @@
 import { useLoaderData } from "react-router-dom";
 import ArtsCard from "../../Components/ArtsCard/ArtsCard";
+import { useState } from "react";
 
 const Home = () => {
-    const arts = useLoaderData();
+    const loadedArts = useLoaderData();
+    const [arts, setArts] = useState(loadedArts);
+
 
     return (
         <div>
@@ -10,7 +13,7 @@ const Home = () => {
 
             <div className="grid md:grid-cols-3 w-full place-items-center min-h-screen">
                 {
-                    arts.map(art => <ArtsCard key={art._id} art={art}></ArtsCard>)
+                    arts.map(art => <ArtsCard key={art._id} art={art} arts={arts} setArts={setArts}></ArtsCard>)
                 }
             </div>
         </div>

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-const ArtsCard = ({ art }) => {
+const ArtsCard = ({ art, arts, setArts }) => {
 
     const { _id, name, stockStatus, customization, rating, price, description, category, item, photo } = art;
 
@@ -32,6 +32,8 @@ const ArtsCard = ({ art }) => {
                                 text: "Your file has been deleted.",
                                 icon: "success"
                             });
+                            const remaining = arts.filter(art => art._id !== _id);
+                            setArts(remaining);
                         }
                     })
             }
