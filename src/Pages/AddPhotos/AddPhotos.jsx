@@ -10,7 +10,7 @@
 // j. User Email
 // k. User Name
 // l. “Add” button
-
+import Swal from 'sweetalert2'
 const AddPhotos = () => {
 
     const handleAdd = e => {
@@ -44,6 +44,15 @@ const AddPhotos = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Your Artwork Has Successfully Added',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
             })
     }
 
